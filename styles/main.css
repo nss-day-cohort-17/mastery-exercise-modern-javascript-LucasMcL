@@ -1,3 +1,40 @@
+/*****************
+ ***Page Layout***
+ *****************/
+
+/*
+Note: html, body, and articles set to 100% of window height
+This allows for setting the sections to a % of height
+*/
+
+/*
+Bug: Next button disappears on mobile view
+*/
+
+html {
+	height: 100%;
+}
+
 body {
+	height: 100%;
 	background-image: url('../img/background.png')
+}
+
+article {
+	height: 100%;
+}
+
+article#selection section {
+	height: 75%;
+}
+
+/*****************
+ *Initial Display*
+ *****************/
+article {
+	display: none;
+}
+
+section {
+	display: none;
 }

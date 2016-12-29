@@ -3,29 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <title>Robot Battledome</title>
+  <!-- Bootstrap links -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- My link -->
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
 
-<section id="landing-page">
+<article id="landing-page">
 
-</section>
-<section id="select-robot">
+</article>
 
-</section>
-<section id="select-model">
+<!-- Hide article at beginning -->
+<article id="selection">
+	<header class="text-center">
+		<h1>Robot Battledome</h1>
+	</header>
 
-</section>
-<section id="select-weapon">
 
-</section>
-<section id="confirmation-screen">
+	<!-- Select Robot -->
+	<section id="select-robot" class="card">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="/img/01.jpg" alt="" class="img-responsive">
+				</div>
+				<div class="col-md-4">
+					<img src="/img/02.jpg" alt="" class="img-responsive">
+				</div>
+				<div class="col-md-4">
+					<img src="/img/03.jpg" alt="" class="img-responsive">
+				</div>
+			</div> <!-- end .row -->
+		</div> <!-- end .container -->
+	</section>
 
-</section>
-<section id="battledome">
+	<!-- Select Model -->
+	<section id="select-model" class="card">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<img src="/img/01.jpg" alt="" class="img-responsive">
+				</div>
+				<div class="col-md-4">
+					<img src="/img/02.jpg" alt="" class="img-responsive">
+				</div>
+			</div> <!-- end .row -->
+		</div> <!-- end .container -->
+	</section>
 
-</section>
+	<!-- Select Weapon -->
+	<section id="select-weapon" class="card">
 
+	<!-- Confirmation -->
+	</section>
+
+	<section id="confirmation" class="card">
+
+	</section>
+</div> <!-- end section-container -->
+<div class="container btn-container">
+	<div class="row text-center">
+		<a href="#" class="btn btn-default btn-lg" id="previous"> Previous </a>
+		<a href="#" class="btn btn-default btn-lg" id="next"> Next </a>
+	</div>
+
+</article>
+
+<article id="battledome">
+
+</article>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- My scripts -->
 <script src="javascripts/robots.js"></script>
 <script src="javascripts/app.js"></script>
 </body>
