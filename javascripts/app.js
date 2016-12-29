@@ -26,13 +26,18 @@ let sections = ["select-robot",
 								"select-weapon",
 								"confirmation"]
 let sectionIndex = 0
+let titleScreenDone = false
 
 $(document).ready(function() {
+
 	// Show first article
-	// NOTE: change this when you get the title screen working
-	$('article#selection').show()
-	// NOTE: change this when you get the title screen working
-	$('section#select-robot').show()
+	$('article#landing-page').show()
+	//Note: adjust this animation
+	animateTitle()
+	//Note: use setTimeout to delay showing of footer
+	// after animation
+	$(document).keypress(moveFromTitle)
+	$(document).click(moveFromTitle)
 
 	// Disable the previous button upon load
 	$('#previous').attr('disabled', true)
@@ -42,6 +47,19 @@ $(document).ready(function() {
 	// When the previous button is clicked
 	$('#previous').click(showPreviousSection)
 })
+
+function animateTitle() {
+	$('article#landing-page h1').slideDown("slow")
+}
+
+function moveFromTitle() {
+	if(titleScreenDone === true) return
+	else {
+		$('article#landing-page').hide()
+		$('article#selection').show()
+		titleScreenDone = true
+	}
+}
 
 function showNextSection() {
 	$(`#${sections[sectionIndex]}`).hide()

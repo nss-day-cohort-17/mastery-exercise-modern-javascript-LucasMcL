@@ -24,9 +24,19 @@ article {
 	height: 100%;
 }
 
+#title {
+	/*Center text vetically and horizontally*/
+	position: absolute;
+  top: 40%; /*A little shifted up*/
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 article#selection section {
 	height: 75%;
 }
+
+
 
 /*****************
  *Initial Display*
@@ -37,4 +47,21 @@ article {
 
 section {
 	display: none;
+}
+
+/* First section of second article */
+/* Will already be there when second article is shown*/
+section#select-robot {
+	display: block;
+}
+
+article#landing-page h1{
+	display: none;
+}
+
+/*****************
+ ***Page Styles***
+ *****************/
+#title {
+	font-size: 150px;
 }
