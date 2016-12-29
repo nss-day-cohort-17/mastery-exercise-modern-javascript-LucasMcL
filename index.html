@@ -26,50 +26,132 @@
 
 	<!-- Select Robot -->
 	<section id="select-robot" class="card">
-		<h2 class="text-center">Select your robot</h2>
+		<h2 class="text-center">Select your robot type</h2>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
-					<img src="/img/01.jpg" alt="" class="img-responsive">
-				</div>
-				<div class="col-md-4">
-					<img src="/img/02.jpg" alt="" class="img-responsive">
-				</div>
-				<div class="col-md-4">
-					<img src="/img/03.jpg" alt="" class="img-responsive">
-				</div>
+				<div id="rock" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Rock</h3>
+						<img src="/img/robots/rock.png" alt=""">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+				<div id="paper" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Paper</h3>
+						<img src="/img/robots/paper.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+				<div id="scissors" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Scissors</h3>
+						<img src="/img/robots/scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
 			</div> <!-- end .row -->
 		</div> <!-- end .container -->
 	</section>
 
 	<!-- Select Model -->
+	<!-- Show/Hide row based on robot selection -->
 	<section id="select-model" class="card">
 		<h2 class="text-center">Select your model</h2>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-md-offset-2">
-					<img src="/img/01.jpg" alt="" class="img-responsive">
-				</div>
-				<div class="col-md-4">
-					<img src="/img/02.jpg" alt="" class="img-responsive">
-				</div>
+			<!-- Row -->
+			<div id="rock-models" class="row model-row">
+				<div id="boulder" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Boulder</h3>
+						<img src="/img/models/boulder.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+				<div id="pebble" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Pebble</h3>
+						<img src="/img/models/pebble.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+			<!-- Row -->
+			<div id="paper-models" class="row model-row">
+				<div id="scroll" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Scroll</h3>
+						<img src="/img/models/scroll.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+				<div id="index-card" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Index Card</h3>
+						<img src="/img/models/index-card.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+			<!-- Row -->
+			<div id="scissors-models" class="row model-row">
+				<div id="garden-scissors" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Garden Scissors</h3>
+						<img src="/img/models/garden-scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
+				<div id="craft-scissors" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Craft Scissors</h3>
+						<img src="/img/models/craft-scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Here's some text</p>
+					</div>
+				</div> <!-- end col -->
 			</div> <!-- end .row -->
 		</div> <!-- end .container -->
 	</section>
 
-	<!-- Select Weapon -->
-	<section id="select-weapon" class="card">
-	<h2 class="text-center">Select your weapon</h2>
-
-
+	<!-- Name -->
+	<section id="input-name" class="card">
+	<h2 class="text-center">What's your robot's name?</h2>
+		<input type="text" class="center-block" placeholder="Please enter a name">
 	</section>
 
 	<!-- Confirmation -->
 	<section id="confirmation" class="card">
-	<h2 class="text-center">Are you sure?</h2>
-
+	<h2 class="text-center">Proceed to Battle?</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="img-container bg-primary">
+						<h3 class="text-center"></h3>
+						<img src="" alt=""> <!-- insert src when user selects model -->
+					</div>
+				</div> <!-- end col -->
+			</div>
+		</div>
 	</section>
-</div> <!-- end section-container -->
+
 <div class="container btn-container">
 	<div class="row text-center">
 		<button class="btn btn-default btn-lg" id="previous"> Previous </button>

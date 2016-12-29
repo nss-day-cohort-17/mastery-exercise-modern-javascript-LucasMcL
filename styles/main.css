@@ -7,17 +7,16 @@ Note: html, body, and articles set to 100% of window height
 This allows for setting the sections to a % of height
 */
 
-/*
-Bug: Next button disappears on mobile view
-*/
-
 html {
 	height: 100%;
 }
 
 body {
 	height: 100%;
-	background-image: url('../img/background.png')
+	background-image: url('../img/graphy.png');
+	/*background-image: url('../img/school-background.jpg');
+	background-size: cover;
+	background-position: center;*/
 }
 
 article {
@@ -33,9 +32,19 @@ article {
 }
 
 article#selection section {
-	height: 75%;
+	min-height: 75%;
 }
 
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+/*.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}*/
 
 
 /*****************
@@ -49,15 +58,21 @@ section {
 	display: none;
 }
 
+article#landing-page h1{
+	display: none;
+}
+
 /* First section of second article */
 /* Will already be there when second article is shown*/
 section#select-robot {
 	display: block;
 }
 
-article#landing-page h1{
+.stats-container {
 	display: none;
 }
+
+
 
 /*****************
  ***Page Styles***
@@ -65,3 +80,53 @@ article#landing-page h1{
 #title {
 	font-size: 150px;
 }
+
+
+/*****************
+ ** Image Styles *
+ *****************/
+
+/* Placeholder images were 550 x 400 */
+
+.img-container{
+	height: 400px;
+}
+
+section#select-robot img,
+section#select-model img,
+section#confirmation img {
+	max-width: 80%;
+	max-height: 80%;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 50px;
+}
+
+/*****************
+ *Toggled Styles *
+ *****************/
+
+/*
+Will still be hidden, even when parent element is revealed
+using .show()
+*/
+.hidden {
+	display: none !important;
+}
+
+.highlight {
+	background-color: yellow;
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+

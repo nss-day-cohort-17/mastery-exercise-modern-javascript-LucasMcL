@@ -16,14 +16,15 @@
 	// Header
 	// Section, select-robot [hide previous button]
 	// Section, select-model
+		// This has to be dynamic, based on robot selection
 	// Section, select-weapon
-	// Section, confirmation [hide next button]
+	// Section, input-name [hide next button]
 	// Buttons below
 // Article -- Battlefield
 
 let sections = ["select-robot",
 								"select-model",
-								"select-weapon",
+								"input-name",
 								"confirmation"]
 let sectionIndex = 0
 let titleScreenDone = false
@@ -46,6 +47,17 @@ $(document).ready(function() {
 	$('#next').click(checkThenProceed)
 	// When the previous button is clicked
 	$('#previous').click(showPreviousSection)
+
+	$('.robot').click(function(clickEvt) {
+		loadModels(clickEvt)
+		highlightRobot(clickEvt)
+	})
+
+	$('.model').click(function(clickEvt) {
+		loadConfirmationImage(clickEvt)
+		highlightModel(clickEvt)
+	})
+
 })
 
 function animateTitle() {
@@ -104,6 +116,76 @@ function checkThenProceed() {
 	}
 	if(okToProceed = true) showNextSection()
 }
+
+function loadModels(clickEvt) {
+	// Get id from robot element
+	var robot = $(clickEvt.target)
+		.closest('.robot')
+		.attr('id')
+
+	// Class uses !important so it stays hidden,
+	// Even when the next section is shown
+	$('.model-row').addClass('hidden')
+
+	switch (robot) {
+		case 'rock':
+			$('#rock-models').removeClass('hidden')
+			break
+		case 'paper':
+			$('#paper-models').removeClass('hidden')
+			break
+		case 'scissors':
+			$('#scissors-models').removeClass('hidden')
+			break
+	}
+}
+
+function highlightRobot(clickEvt) {
+	var target = clickEvt.target
+	$('.robot .img-container')
+		.removeClass('highlight')
+	$('.robot .stats-container')
+		.hide()
+
+	$(target)
+		.closest('.img-container')
+		.addClass('highlight')
+	$(target)
+		.closest('.robot')
+		.find('.stats-container')
+		.slideDown("slow")
+}
+
+function highlightModel(clickEvt) {
+	var target = clickEvt.target
+	$('.model .img-container')
+		.removeClass('highlight')
+	$('.model .stats-container')
+		.hide()
+
+	$(target)
+		.closest('.img-container')
+		.addClass('highlight')
+	$(target)
+		.closest('.model')
+		.find('.stats-container')
+		.slideDown("slow")
+}
+
+function loadConfirmationImage(clickEvt) {
+	var imgSrc = $(clickEvt.target)
+		.closest('.model')
+		.find('img')
+		.attr('src')
+
+	$('#confirmation img')
+		.attr('src', imgSrc)
+}
+
+
+
+
+
 
 
 
