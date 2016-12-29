@@ -134,7 +134,7 @@
 	<!-- Name -->
 	<section id="input-name" class="card">
 	<h2 class="text-center">What's your robot's name?</h2>
-		<input type="text" class="center-block" placeholder="Please enter a name">
+		<input id="name" type="text" class="center-block" placeholder="Please enter a name">
 	</section>
 
 	<!-- Confirmation -->
@@ -148,16 +148,17 @@
 						<img src="" alt=""> <!-- insert src when user selects model -->
 					</div>
 				</div> <!-- end col -->
+			</div> <!-- end row -->
+			<div class="container text-center">
+				<button id="to-battle" class="btn btn-danger"> To Battle! </button>
 			</div>
-		</div>
+		</div> <!-- end container -->
 	</section>
 
-<div class="container btn-container">
-	<div class="row text-center">
+	<div class="container btn-container text-center">
 		<button class="btn btn-default btn-lg" id="previous"> Previous </button>
 		<button href="#" class="btn btn-default btn-lg" id="next"> Next </button>
 	</div>
-
 </article>
 
 <article id="battledome">

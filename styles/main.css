@@ -81,6 +81,25 @@ section#select-robot {
 	font-size: 150px;
 }
 
+#to-battle {
+	margin-top: 100px;
+	width: 600px;
+	height: 75px;
+	font-size: 36px;
+}
+
+.btn-container {
+	padding-top: 20px
+}
+
+#name {
+	width: 400px;
+	height: 50px;
+	font-size: 36px;
+
+	margin-top: 150px
+}
+
 
 /*****************
  ** Image Styles *
@@ -92,9 +111,7 @@ section#select-robot {
 	height: 400px;
 }
 
-section#select-robot img,
-section#select-model img,
-section#confirmation img {
+section img {
 	max-width: 80%;
 	max-height: 80%;
 	position: absolute;

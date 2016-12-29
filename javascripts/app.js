@@ -58,6 +58,12 @@ $(document).ready(function() {
 		highlightModel(clickEvt)
 	})
 
+	$('#name').keyup(function(keyEvt) {
+		updateName()
+		if(keyEvt.key === "Enter") checkThenProceed()
+	})
+
+	$('#to-battle').click(loadBattle)
 })
 
 function animateTitle() {
@@ -79,7 +85,7 @@ function showNextSection() {
 	$(`#${sections[sectionIndex]}`).show()
 	$('#previous').attr('disabled', false)
 	if(sectionIndex === sections.length - 1) {
-		$('#next').attr('disabled', true)
+		$('#next').addClass('hidden')
 	}
 }
 
@@ -87,7 +93,7 @@ function showPreviousSection() {
 	$(`#${sections[sectionIndex]}`).hide()
 	sectionIndex--
 	$(`#${sections[sectionIndex]}`).show()
-	$('#next').attr('disabled', false)
+	$('#next').removeClass('hidden')
 	if(sectionIndex === 0) {
 		$('#previous').attr('disabled', true)
 	}
@@ -182,7 +188,16 @@ function loadConfirmationImage(clickEvt) {
 		.attr('src', imgSrc)
 }
 
+function updateName() {
+	var name = $('#name').val()
 
+	$('#confirmation h3').text(name)
+}
+
+function loadBattle() {
+	$('article').hide()
+	$('article#battledome').show()
+}
 
 
 
