@@ -35,18 +35,6 @@ article#selection section {
 	min-height: 75%;
 }
 
-/*
- * Row with equal height columns
- * --------------------------------------------------
- */
-/*.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}*/
-
-
 /*****************
  *Initial Display*
  *****************/
@@ -100,13 +88,15 @@ section#select-robot {
 	margin-top: 150px
 }
 
+#battledome table {
+	position: absolute;
+	bottom: 0;
+}
+
 
 /*****************
  ** Image Styles *
  *****************/
-
-/* Placeholder images were 550 x 400 */
-
 .img-container{
 	height: 400px;
 }

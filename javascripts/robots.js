@@ -19,6 +19,7 @@
 var Battledome = {}
 
 Battledome.Robot = function(name) {
+	this.model = null
 	this.health = null
 	this.strengh = null
 	this.cooldown = null
@@ -56,6 +57,7 @@ Battledome.Robot.Boulder = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 6)
 
+	this.model = "Boulder"
 	this.health = 80 + healthBonus
 	this.strength = 25 + strengthBonus
 	this.cooldown = 5
@@ -75,6 +77,7 @@ Battledome.Robot.Pebble = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 6)
 
+	this.model = "Pebble"
 	this.health = 60 + healthBonus
 	this.strength = 10 + strengthBonus
 	this.cooldown = 1
@@ -95,6 +98,7 @@ Battledome.Robot.Scroll = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 6)
 
+	this.model = "Scroll"
 	this.health = 50 + healthBonus
 	this.strength = 20 + strengthBonus
 	this.cooldown = 4
@@ -114,6 +118,7 @@ Battledome.Robot.IndexCard = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 3)
 
+	this.model = "Index Card"
 	this.health = 50 + healthBonus
 	this.strength = 5 + strengthBonus
 	this.cooldown = .5
@@ -133,6 +138,7 @@ Battledome.Robot.GardenScissors = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 6)
 
+	this.model = "Garden Scissors"
 	this.health = 60 + healthBonus
 	this.strength = 10 + strengthBonus
 	this.cooldown = 2
@@ -152,6 +158,7 @@ Battledome.Robot.CraftScissors = function() {
 	var healthBonus = Math.floor(Math.random() * 21)
 	var strengthBonus = Math.floor(Math.random() * 3)
 
+	this.model = "Craft Scissors"
 	this.health = 50 + healthBonus
 	this.strength = 8 + strengthBonus
 	this.cooldown = 1

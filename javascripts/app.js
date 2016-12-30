@@ -22,15 +22,18 @@
 	// Buttons below
 // Article -- Battlefield
 
+// NOTE: put battledome code into own file
+
 let sections = ["select-robot",
 								"select-model",
 								"input-name",
 								"confirmation"]
 let sectionIndex = 0
 let titleScreenDone = false
-var robotTypeSelected = false
+let robotTypeSelected = false
 let robotModelSelected = false
 var player1 = {}
+var enemy = {}
 
 $(document).ready(function() {
 
@@ -283,8 +286,46 @@ function generateEnemy() {
   									"Wide-Ruled Nightmare"]
 	var scissorsNames = ["Edward Scissorhands",
 											 "I Will Cut You"]
+	var models = ["Boulder", "Pebble",
+								"Scroll", "IndexCard",
+								"GardenScissors", "CraftScissors"]
 
+	var random = Math.floor(Math.random() * 6)
+	var randomModel = models[random]
+	var random = Math.floor(Math.random() * 2)
 
+	enemy = new Battledome.Robot[randomModel]()
+
+	// Assign name, load picture into battlefield
+	switch(enemy.model) {
+		case 'Boulder':
+			enemy.name = rockNames[random]
+			$('#enemy img').attr('src', "../img/models/boulder.png")
+			break
+		case 'Pebble':
+			enemy.name = rockNames[random]
+			$('#enemy img').attr('src', "../img/models/pebble.png")
+			break
+		case 'Scroll':
+			enemy.name = paperNames[random]
+			$('#enemy img').attr('src', "../img/models/scroll.png")
+			break
+		case 'Index Card':
+			enemy.name = paperNames[random]
+			$('#enemy img').attr('src', "../img/models/index-card.png")
+			break
+		case 'Garden Scissors':
+			enemy.name = scissorsNames[random]
+			$('#enemy img').attr('src', "../img/models/garden-scissors.png")
+			break
+		case 'Craft Scissors':
+			enemy.name = scissorsNames[random]
+			$('#enemy img').attr('src', "../img/models/craft-scissors.png")
+			break
+	}
+
+	// Load name into battlefield
+	$('#enemy h3').text(enemy.name)
 }
 
 
