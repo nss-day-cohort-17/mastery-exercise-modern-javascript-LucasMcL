@@ -28,6 +28,7 @@ let sections = ["select-robot",
 								"confirmation"]
 let sectionIndex = 0
 let titleScreenDone = false
+var player1 = {}
 
 $(document).ready(function() {
 
@@ -56,11 +57,15 @@ $(document).ready(function() {
 	$('.model').click(function(clickEvt) {
 		loadConfirmationImage(clickEvt)
 		highlightModel(clickEvt)
+		assignRobot(clickEvt)
 	})
 
 	$('#name').keyup(function(keyEvt) {
 		updateName()
-		if(keyEvt.key === "Enter") checkThenProceed()
+		if(keyEvt.key === "Enter") {
+			assignRobotName()
+			checkThenProceed()
+		}
 	})
 
 	$('#to-battle').click(loadBattle)
@@ -113,8 +118,9 @@ function checkThenProceed() {
 		case "select-model":
 			okToProceed = true
 			break
-		case "select-weapon":
+		case "input-name":
 			okToProceed = true
+			assignRobotName()
 			break
 		case "confirmation":
 			okToProceed = true
@@ -188,9 +194,40 @@ function loadConfirmationImage(clickEvt) {
 		.attr('src', imgSrc)
 }
 
+function assignRobot(clickEvt) {
+	var model = $(clickEvt.target)
+		.closest('.model')
+		.attr('id')
+
+	switch(model) {
+		case 'boulder':
+			player1 = new Battledome.Robot.Boulder()
+			break
+		case 'pebble':
+			player1 = new Battledome.Robot.Pebble()
+			break
+		case 'scroll':
+			player1 = new Battledome.Robot.Scroll()
+			break
+		case 'index-card':
+			player1 = new Battledome.Robot.IndexCard()
+			break
+		case 'garden-scissors':
+			player1 = new Battledome.Robot.GardenScissors()
+			break
+		case 'craft-scissors':
+			player1 = new Battledome.Robot.CraftScissors()
+			break
+	}
+}
+
+function assignRobotName(evt) {
+	var name = $('#name').val()
+	player1.name = name
+}
+
 function updateName() {
 	var name = $('#name').val()
-
 	$('#confirmation h3').text(name)
 }
 
