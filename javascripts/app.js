@@ -28,6 +28,8 @@ let sections = ["select-robot",
 								"confirmation"]
 let sectionIndex = 0
 let titleScreenDone = false
+var robotTypeSelected = false
+let robotModelSelected = false
 var player1 = {}
 
 $(document).ready(function() {
@@ -50,12 +52,14 @@ $(document).ready(function() {
 	$('#previous').click(showPreviousSection)
 
 	$('.robot').click(function(clickEvt) {
+		robotTypeSelected = true
 		loadModels(clickEvt)
 		highlightRobot(clickEvt)
 	})
 
 	$('.model').click(function(clickEvt) {
-		loadConfirmationImage(clickEvt)
+		robotModelSelected = true
+		updateImages(clickEvt)
 		highlightModel(clickEvt)
 		assignRobot(clickEvt)
 	})
@@ -68,7 +72,10 @@ $(document).ready(function() {
 		}
 	})
 
-	$('#to-battle').click(loadBattle)
+	$('#to-battle').click(function() {
+		generateEnemy()
+		loadBattle()
+	})
 })
 
 function animateTitle() {
@@ -94,7 +101,27 @@ function showNextSection() {
 	}
 }
 
+// Remove highlighting from page and change
+// boolean variable for checking selection to false
+// Then, go back a page
 function showPreviousSection() {
+	// Discard changes from current page when you go backwards
+	var currentSection = sections[sectionIndex]
+	switch (currentSection) {
+		case 'select-model':
+			robotModelSelected = false
+			$('.model .img-container')
+				.removeClass('highlight')
+			$('.model .stats-container')
+				.hide()
+			break
+		case 'input-name':
+			$('#name').val('')
+			break
+	}
+
+	// Hide current page, show previous page
+	// Decriment sectionIndex
 	$(`#${sections[sectionIndex]}`).hide()
 	sectionIndex--
 	$(`#${sections[sectionIndex]}`).show()
@@ -113,20 +140,29 @@ function checkThenProceed() {
 	// Performs check to see if it's ok to proceed
 	switch (currentSection) {
 		case "select-robot":
-			okToProceed = true
+			if(robotTypeSelected === true) okToProceed = true
+			else alert("Please select a robot type.")
 			break
 		case "select-model":
-			okToProceed = true
+			if(robotModelSelected === true) okToProceed = true
+			else alert("Please select your model")
 			break
 		case "input-name":
-			okToProceed = true
-			assignRobotName()
+			if($('#name').val() != ''){
+				okToProceed = true
+				assignRobotName()
+			}
+			else alert("Please input a name")
 			break
 		case "confirmation":
 			okToProceed = true
 			break
 	}
-	if(okToProceed = true) showNextSection()
+
+	// Shows next section if it's OK to
+	if(okToProceed === true) {
+		showNextSection()
+	}
 }
 
 function loadModels(clickEvt) {
@@ -184,13 +220,16 @@ function highlightModel(clickEvt) {
 		.slideDown("slow")
 }
 
-function loadConfirmationImage(clickEvt) {
+function updateImages(clickEvt) {
 	var imgSrc = $(clickEvt.target)
 		.closest('.model')
 		.find('img')
 		.attr('src')
 
 	$('#confirmation img')
+		.attr('src', imgSrc)
+
+	$('#player1 img')
 		.attr('src', imgSrc)
 }
 
@@ -229,11 +268,23 @@ function assignRobotName(evt) {
 function updateName() {
 	var name = $('#name').val()
 	$('#confirmation h3').text(name)
+	$('#player1 h3').text(name)
 }
 
 function loadBattle() {
 	$('article').hide()
 	$('article#battledome').show()
+}
+
+function generateEnemy() {
+	var rockNames = ["Stoney McStoneface",
+									 "Rock Lobstah"]
+  var paperNames = ["Bureaucracy",
+  									"Wide-Ruled Nightmare"]
+	var scissorsNames = ["Edward Scissorhands",
+											 "I Will Cut You"]
+
+
 }
 
 
