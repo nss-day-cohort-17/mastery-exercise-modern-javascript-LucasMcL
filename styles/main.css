@@ -7,6 +7,10 @@ Note: html, body, and articles set to 100% of window height
 This allows for setting the sections to a % of height
 */
 
+/*
+	NOTE: debug col heights in mobile size;
+*/
+
 html {
 	height: 100%;
 }
@@ -33,6 +37,15 @@ article {
 
 article#selection section {
 	min-height: 75%;
+}
+
+.col-md-4 {
+	height: 400px;
+}
+
+/* Override height of 400px for certain columns */
+.auto-height {
+	height: auto;
 }
 
 /*****************
@@ -97,8 +110,9 @@ section#select-robot {
 /*****************
  ** Image Styles *
  *****************/
-.img-container{
+.img-container {
 	height: 400px;
+	margin-top: -20px; /*puts inline with col-md-4*/
 }
 
 #battledome img,
