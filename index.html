@@ -207,6 +207,11 @@
 							<td>something</td>
 						</tr>
 					</table>
+				</div> <!-- end img-container -->
+				<div class="health-bar" data-total="" data-value="">
+					<div class="bar">
+						<div class="hit"></div>
+					</div>
 				</div>
 			</div> <!-- end col -->
 			<div id="enemy" class="col-md-4 col-md-offset-4">
@@ -214,10 +219,15 @@
 					<h3 class="text-center"></h3>
 					<img src="" alt=""> <!-- insert src when user selects model -->
 			</div>
+				<div class="health-bar" data-total="" data-value="">
+					<div class="bar">
+						<div class="hit"></div>
+					</div>
+				</div>
 		</div>
 	</div>
 	<div class="container text-center">
-		<button id="to-battle" class="btn btn-danger"> Attack! </button>
+		<button id="attack" class="btn btn-danger"> Attack! </button>
 	</div>
 </article>
 
@@ -227,6 +237,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- My scripts -->
 <script src="javascripts/robots.js"></script>
+<script src="javascripts/combat.js"></script>
 <script src="javascripts/app.js"></script>
+
 </body>
 </html>
