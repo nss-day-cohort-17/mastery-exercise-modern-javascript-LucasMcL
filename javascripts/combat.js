@@ -62,7 +62,17 @@ function generateEnemy() {
 }
 
 function whenAttackIsClicked() {
-	console.log("Attack!")
+	var attackBtn = $('#attack')
+	damageEnemy()
+	animateCooldown()
+	attackBtn.attr('disabled', true)
+
+	setTimeout(function() {
+		attackBtn.attr('disabled', false)
+	}, player1.cooldown * 1000)
+}
+
+function damageEnemy() {
 	var attackBtn = $('#attack'),
 			enemyHealth = $('#enemy .health-bar').data('health'),
 			enemyMaxHealth = $('#enemy .health-bar').data('max-health'),
@@ -87,12 +97,15 @@ function whenAttackIsClicked() {
       hit.addClass('hidden')
       hit.css('width', 0)
     }, 500)
+}
 
-	attackBtn.attr('disabled', true)
+function animateCooldown() {
+	var cooldown = player1.cooldown
+	$(".cooldown-bar").css('width', 0)
 
-	setTimeout(function() {
-		attackBtn.attr('disabled', false)
-	}, player1.cooldown * 1000)
+	$(".cooldown-bar").animate({
+	  width: '100%'
+  }, player1.cooldown * 1000);
 }
 
 

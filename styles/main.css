@@ -178,6 +178,21 @@ using .show()
   width: 0px;
 }
 
+/*****************
+ * Cooldown Bar **
+ *****************/
+
+.cooldown {
+	width: 600px;
+	height: 20px;
+	padding: 2.5px;
+}
+
+.cooldown-bar {
+	background: #00ccff;
+	height: 15px;
+}
+
 
 
 
