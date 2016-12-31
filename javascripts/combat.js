@@ -2,13 +2,11 @@
 
 function loadBattle() {
 	$('#player1 .health-bar')
-		.data('total', player1.health)
-		.data('value', player1.health)
+		.data('max-health', player1.health)
+		.data('health', player1.health)
 	$('#enemy .health-bar')
-		.data('total', enemy.health)
-		.data('value', enemy.health)
-
-
+		.data('max-health', enemy.health)
+		.data('health', enemy.health)
 
 	$('article').hide()
 	$('article#battledome').show()
@@ -65,9 +63,32 @@ function generateEnemy() {
 
 function whenAttackIsClicked() {
 	console.log("Attack!")
-	attackBtn = $('#attack')
-	attackBtn.attr('disabled', true)
+	var attackBtn = $('#attack'),
+			enemyHealth = $('#enemy .health-bar').data('health'),
+			enemyMaxHealth = $('#enemy .health-bar').data('max-health'),
+			damage = player1.strength,
+			hBar = $('#enemy .health-bar'),
+			bar = $('#enemy .bar'),
+			hit = $('#enemy .hit')
 
+	newHealth = enemyHealth - damage;
+
+	var	barWidth = (newHealth / enemyMaxHealth) * 100,
+			hitWidth = (damage / enemyHealth) * 100
+
+	// show hit bar and set the width
+  hit.css('width', 0)
+  hit.removeClass('hidden')
+  hit.css('width', hitWidth + "%");
+  hBar.data('health', newHealth);
+
+  setTimeout(function(){
+      bar.css('width', barWidth + "%");
+      hit.addClass('hidden')
+      hit.css('width', 0)
+    }, 500)
+
+	attackBtn.attr('disabled', true)
 
 	setTimeout(function() {
 		attackBtn.attr('disabled', false)
