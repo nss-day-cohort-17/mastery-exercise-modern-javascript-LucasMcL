@@ -24,14 +24,14 @@
 
 // NOTE: put battledome code into own file
 
-let sections = ["select-robot",
+var sections = ["select-robot",
 								"select-model",
 								"input-name",
 								"confirmation"]
-let sectionIndex = 0
-let titleScreenDone = false
-let robotTypeSelected = false
-let robotModelSelected = false
+var sectionIndex = 0
+var titleScreenDone = false
+var robotTypeSelected = false
+var robotModelSelected = false
 var player1 = {}
 var enemy = {}
 
@@ -54,6 +54,8 @@ $(document).ready(function() {
 	$('#next').click(checkThenProceed)
 	// When the previous button is clicked
 	$('#previous').click(showPreviousSection)
+
+	loadModelStats()
 
 	$('.robot').click(function(clickEvt) {
 		robotTypeSelected = true
@@ -79,6 +81,7 @@ $(document).ready(function() {
 	$('#to-battle').click(function() {
 		generateEnemy()
 		loadBattle()
+		fightPlayer()
 	})
 
 	$('#attack').click(whenAttackIsClicked)
@@ -193,6 +196,10 @@ function loadModels(clickEvt) {
 			$('#scissors-models').removeClass('hidden')
 			break
 	}
+}
+
+function loadModelStats() {
+
 }
 
 function highlightRobot(clickEvt) {

@@ -48,6 +48,10 @@ article#selection section {
 	height: auto;
 }
 
+.model table {
+	width: 100%;
+}
+
 /*****************
  *Initial Display*
  *****************/
@@ -87,6 +91,10 @@ section#select-robot {
 	width: 600px;
 	height: 75px;
 	font-size: 36px;
+}
+
+#attack {
+	margin-top: 150px;
 }
 
 .btn-container {
@@ -183,15 +191,54 @@ using .show()
  *****************/
 
 .cooldown {
-	width: 600px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 	height: 20px;
 	padding: 2.5px;
+  width: 100%;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
 }
 
 .cooldown-bar {
 	background: #00ccff;
+  width: 100%;
 	height: 15px;
+  position: relative;
 }
+
+/*****************
+ *** Stats Bar ***
+ *****************/
+
+.stats-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 20px;
+	padding: 2.5px;
+  width: 100%;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.stats-bar {
+	background: #00ccff;
+  width: 100%;
+	height: 15px;
+  position: relative;
+}
+
+
 
 
 
