@@ -48,8 +48,13 @@ article#selection section {
 	height: auto;
 }
 
-.model table {
+table {
 	width: 100%;
+}
+
+/* Enough width for stat bars */
+.model td:last-child {
+	width: 150px;
 }
 
 /*****************

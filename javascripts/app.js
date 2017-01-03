@@ -1,28 +1,5 @@
-// SPA Layout
-
-// Every "page" in a article
-// Title page, click anywhere to continue
-// First page, next button on right side
-// Second page on, previous and next buttons
-
-// The previous button should execute immediately
-// The next button should perform a check to make sure
-//	something has been selected
-
-// Maybe give all the buttons that move forward the same class?
-
-// Article -- Landing page
-// Article -- Selection
-	// Header
-	// Section, select-robot [hide previous button]
-	// Section, select-model
-		// This has to be dynamic, based on robot selection
-	// Section, select-weapon
-	// Section, input-name [hide next button]
-	// Buttons below
-// Article -- Battlefield
-
-// NOTE: put battledome code into own file
+// Bug:
+	// clicking on stats removes highlighting
 
 var sections = ["select-robot",
 								"select-model",
@@ -199,7 +176,38 @@ function loadModels(clickEvt) {
 }
 
 function loadModelStats() {
+	$('#boulder .health .stats-bar').css('width', '90%')
+	$('#boulder .strength .stats-bar').css('width', '83%')
+	$('#boulder .speed .stats-bar').css('width', '5%')
 
+	$('#pebble .health .stats-bar').css('width', '70%')
+	$('#pebble .strength .stats-bar').css('width', '42%')
+	$('#pebble .speed .stats-bar').css('width', '80%')
+
+	$('#scroll .health .stats-bar').css('width', '60%')
+	$('#scroll .strength .stats-bar').css('width', '75%')
+	$('#scroll .speed .stats-bar').css('width', '20%')
+
+	$('#index-card .health .stats-bar').css('width', '50%')
+	$('#index-card .strength .stats-bar').css('width', '20%')
+	$('#index-card .speed .stats-bar').css('width', '100%')
+
+	$('#garden-scissors .health .stats-bar').css('width', '70%')
+	$('#garden-scissors .strength .stats-bar').css('width', '59%')
+	$('#garden-scissors .speed .stats-bar').css('width', '60%')
+
+	$('#craft-scissors .health .stats-bar').css('width', '60%')
+	$('#craft-scissors .strength .stats-bar').css('width', '30%')
+	$('#craft-scissors .speed .stats-bar').css('width', '80%')
+
+	// Change color based on percent width
+	$('#select-model .stats-bar').each(function() {
+		var width = parseFloat($(this).css('width'))
+
+		if(width >= 75) $(this).css('background', '#14b214')
+		else if (width >= 25 && width < 75) $(this).css('background', 'rgb(219, 219, 19)')
+		else $(this).css('background', '#ff2121')
+	})
 }
 
 function highlightRobot(clickEvt) {

@@ -94,7 +94,7 @@ function damageEnemy() {
 	var attackBtn = $('#attack'),
 			enemyHealth = $('#enemy .health-bar').data('health'),
 			enemyMaxHealth = $('#enemy .health-bar').data('max-health'),
-			damage = player1.strength,
+			damage = calculateDamagePlayer(),
 			hBar = $('#enemy .health-bar'),
 			bar = $('#enemy .bar'),
 			hit = $('#enemy .hit')
@@ -152,7 +152,7 @@ function fightPlayer() {
 function damagePlayer() {
 	var playerHealth = $('#player1 .health-bar').data('health'),
 			playerMaxHealth = $('#player1 .health-bar').data('max-health'),
-			damage = enemy.strength,
+			damage = calculateDamageEnemy(),
 			hBar = $('#player1 .health-bar'),
 			bar = $('#player1 .bar'),
 			hit = $('#player1 .hit')
@@ -196,6 +196,39 @@ function playerWins() {
 	$('#attack').addClass('hidden')
 }
 
+// 40% damage bonus to weak opponent types
+function calculateDamagePlayer() {
+	switch(player1.type) {
+		case "Rock":
+			if(enemy.type === "Scissors") return player1.strength * 1.4
+			break
+		case "Paper":
+			if(enemy.type === "Rock") return player1.strength * 1.4
+			break
+		case "Scissors":
+			if(enemy.type === "Paper") return player1.strength * 1.4
+			break
+	}
+	return player1.strength
+}
+
+// 40% damage bonus to weak opponent types
+function calculateDamageEnemy() {
+	switch(enemy.type) {
+		case "Rock":
+			if(player1.type === "Scissors") return enemy.strength * 1.4
+			break
+		case "Paper":
+			if(player1.type === "Rock") return enemy.strength * 1.4
+			break
+		case "Scissors":
+			if(player1.type === "Paper") return enemy.strength * 1.4
+			break
+	}
+	return enemy.strength
+}
+
+// Not currently used
 function restartGame() {
 	console.log("Restart game")
 
