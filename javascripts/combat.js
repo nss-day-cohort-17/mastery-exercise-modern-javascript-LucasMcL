@@ -3,11 +3,8 @@
 // NOTE: debug battle over message
 	// (make sure it doesn't display until health bar reaches 0)
 
-// To do: desciptions of models
-	// Damage bonus by type
+// To do: Display message when attack hits
 
-// Known bugs:
-	// Message displays before health reaches 0
 var intervalID;
 
 function loadBattle() {
