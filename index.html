@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robot Battledome</title>
+  <!-- Bootstrap links -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- My link -->
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+<article id="landing-page">
+	<h2 class="text-center">Welcome to the...</h2>
+	<h1 id="title" class="text-center">Robot Battledome</h1>
+	<footer class="navbar navbar-fixed-bottom text-center">Press any key or click to continue</div>
+</article>
+
+<!-- Hide article at beginning -->
+<article id="selection">
+	<header class="text-center">
+		<h1>Robot Battledome</h1>
+	</header>
+
+
+	<!-- Select Robot -->
+	<section id="select-robot" class="card">
+		<h2 class="text-center">Select your robot type</h2>
+		<div class="container">
+			<div class="row">
+				<div id="rock" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Rock</h3>
+						<img src="/img/robots/rock.png" alt=""">
+					</div>
+					<div class="stats-container">
+						<p>Available models:</p>
+						<ul>
+							<li>Boulder</li>
+							<li>Pebble</li>
+						</ul>
+					</div>
+				</div> <!-- end col -->
+				<div id="paper" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Paper</h3>
+						<img src="/img/robots/paper.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Available models:</p>
+						<ul>
+							<li>Scroll</li>
+							<li>Index Card</li>
+						</ul>
+					</div>
+				</div> <!-- end col -->
+				<div id="scissors" class="col-md-4 robot">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Scissors</h3>
+						<img src="/img/robots/scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<p>Available models:</p>
+						<ul>
+							<li>Garden Scissors</li>
+							<li>Craft Scissors</li>
+						</ul>
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+		</div> <!-- end .container -->
+	</section>
+
+	<!-- Select Model -->
+	<!-- Show/Hide row based on robot selection -->
+	<section id="select-model" class="card">
+		<h2 class="text-center">Select your model</h2>
+		<div class="container">
+			<!-- Row -->
+			<div id="rock-models" class="row model-row">
+				<div id="boulder" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Boulder</h3>
+						<img src="/img/models/boulder.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Rock Slam</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Scissors</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Paper</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col Boulder -->
+				<div id="pebble" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Pebble</h3>
+						<img src="/img/models/pebble.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Stone Skip</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Scissors</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Paper</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+			<!-- Row -->
+			<div id="paper-models" class="row model-row">
+				<div id="scroll" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Scroll</h3>
+						<img src="/img/models/scroll.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Ancient Arts</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Rock</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Scissors</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col -->
+				<div id="index-card" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Index Card</h3>
+						<img src="/img/models/index-card.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Paper Cut</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Rock</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Scissors</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+			<!-- Row -->
+			<div id="scissors-models" class="row model-row">
+				<div id="garden-scissors" class="col-md-4 col-md-offset-2 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Garden Scissors</h3>
+						<img src="/img/models/garden-scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Prune</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Paper</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Rock</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col -->
+				<div id="craft-scissors" class="col-md-4 model">
+					<div class="img-container bg-primary">
+						<h3 class="text-center">Craft Scissors</h3>
+						<img src="/img/models/craft-scissors.png" alt="">
+					</div>
+					<div class="stats-container">
+						<table class="model-stats">
+							<tr class="health">
+								<td>Health: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="strength">
+								<td>Strength: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="speed">
+								<td>Speed: </td>
+								<td>
+									<div class="stats-bar-container">
+										<div class="stats-bar"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="attack">
+								<td>Attack: </td>
+								<td>Snip</td>
+							</tr>
+							<tr class="strengths">
+								<td>Strong against: </td>
+								<td>Paper</td>
+							</tr>
+							<tr>
+								<td>Weak against: </td>
+								<td>Rock</td>
+							</tr>
+						</table> <!-- end table -->
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end .row -->
+		</div> <!-- end .container -->
+	</section>
+
+	<!-- Name -->
+	<section id="input-name" class="card">
+	<h2 class="text-center">What's your robot's name?</h2>
+		<input id="name" type="text" class="center-block" placeholder="Please enter a name">
+	</section>
+
+	<!-- Confirmation -->
+	<section id="confirmation" class="card">
+	<h2 class="text-center">Proceed to Battle?</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="img-container bg-primary">
+						<h3 class="text-center"></h3>
+						<img src="" alt=""> <!-- insert src when user selects model -->
+					</div>
+				</div> <!-- end col -->
+			</div> <!-- end row -->
+		</div> <!-- end container -->
+		<div class="container text-center">
+			<button id="to-battle" class="btn btn-danger"> To Battle! </button>
+		</div>
+	</section>
+
+	<div class="container btn-container text-center">
+		<button class="btn btn-default btn-lg" id="previous"> Previous </button>
+		<button href="#" class="btn btn-default btn-lg" id="next"> Next </button>
+	</div>
+</article>
+
+<!-- .......... -->
+<!-- .......... -->
+<!-- BATTLEDOME -->
+<!-- .......... -->
+<!-- .......... -->
+<article id="battledome">
+	<header class="text-center">
+		<h1>Robot Battledome</h1>
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 auto-height">
+				<h2 class="text-center">Player 1</h2>
+			</div>
+			<div class="col-md-4 col-md-offset-4 auto-height">
+				<h2 class="text-center">Enemy</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div id="player1" class="col-md-4">
+				<div class="img-container bg-primary">
+					<h3 class="text-center"></h3>
+					<img src="" alt=""> <!-- insert src when user selects model -->
+				</div> <!-- end img-container -->
+				<div class="health-bar" data-max-health="" data-health="">
+					<div class="bar">
+						<div class="hit"></div>
+					</div>
+				</div>
+				<div class="cooldown center-block">
+					<div class="cooldown-bar"></div>
+				</div>
+			</div> <!-- end col -->
+			<div id="enemy" class="col-md-4 col-md-offset-4">
+				<div class="img-container bg-primary">
+					<h3 class="text-center"></h3>
+					<img src="" alt=""> <!-- insert src when user selects model -->
+			</div>
+				<div class="health-bar" data-max-health="" data-health="">
+					<div class="bar">
+						<div class="hit"></div>
+					</div>
+				</div>
+				<div class="cooldown center-block">
+					<div class="cooldown-bar"></div>
+				</div>
+		</div>
+	</div>
+	<div class="container text-center">
+		<button id="attack" class="btn btn-danger"> Attack! </button>
+	</div>
+</article>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- My scripts -->
+<script src="javascripts/robots.js"></script>
+<script src="javascripts/combat.js"></script>
+<script src="javascripts/app.js"></script>
+
+</body>
+</html>

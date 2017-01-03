@@ -1,0 +1,256 @@
+/*****************
+ ***Page Layout***
+ *****************/
+
+/*
+Note: html, body, and articles set to 100% of window height
+This allows for setting the sections to a % of height
+*/
+
+/*
+	NOTE: debug col heights in mobile size;
+*/
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-image: url('../img/graphy.png');
+	/*background-image: url('../img/school-background.jpg');
+	background-size: cover;
+	background-position: center;*/
+}
+
+article {
+	height: 100%;
+}
+
+#title {
+	/*Center text vetically and horizontally*/
+	position: absolute;
+  top: 40%; /*A little shifted up*/
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+article#selection section {
+	min-height: 75%;
+}
+
+.col-md-4 {
+	height: 400px;
+}
+
+/* Override height of 400px for certain columns */
+.auto-height {
+	height: auto;
+}
+
+table {
+	width: 100%;
+}
+
+/* Enough width for stat bars */
+.model td:last-child {
+	width: 150px;
+}
+
+/*****************
+ *Initial Display*
+ *****************/
+article {
+	display: none;
+}
+
+section {
+	display: none;
+}
+
+article#landing-page h1{
+	display: none;
+}
+
+/* First section of second article */
+/* Will already be there when second article is shown*/
+section#select-robot {
+	display: block;
+}
+
+.stats-container {
+	display: none;
+}
+
+
+/*****************
+ ***Page Styles***
+ *****************/
+#title {
+	font-size: 150px;
+}
+
+#to-battle,
+#attack {
+	margin-top: 100px;
+	width: 600px;
+	height: 75px;
+	font-size: 36px;
+}
+
+#attack {
+	margin-top: 150px;
+}
+
+.btn-container {
+	padding-top: 20px
+}
+
+#name {
+	width: 400px;
+	height: 50px;
+	font-size: 36px;
+
+	margin-top: 150px
+}
+
+#battledome table {
+	position: absolute;
+	bottom: 0;
+}
+
+
+/*****************
+ ** Image Styles *
+ *****************/
+.img-container {
+	height: 400px;
+	margin-top: -20px; /*puts inline with col-md-4*/
+}
+
+#battledome img,
+section img {
+	max-width: 80%;
+	max-height: 80%;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 50px;
+}
+
+/*****************
+ *Toggled Styles *
+ *****************/
+
+/*
+Will still be hidden, even when parent element is revealed
+using .show()
+*/
+.hidden {
+	display: none !important;
+}
+
+.highlight {
+	background-color: yellow;
+	color: black;
+}
+
+/*****************
+ ** Health Bar ***
+ *****************/
+
+.health-bar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.bar {
+  background: #c54;
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+
+.hit {
+  background: rgba(255,255,255,0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+}
+
+/*****************
+ * Cooldown Bar **
+ *****************/
+
+.cooldown {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 20px;
+	padding: 2.5px;
+  width: 100%;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.cooldown-bar {
+	background: #00ccff;
+  width: 100%;
+	height: 15px;
+  position: relative;
+}
+
+/*****************
+ *** Stats Bar ***
+ *****************/
+
+.stats-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 20px;
+	padding: 2.5px;
+  width: 100%;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.stats-bar {
+	background: #00ccff;
+  width: 100%;
+	height: 15px;
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
