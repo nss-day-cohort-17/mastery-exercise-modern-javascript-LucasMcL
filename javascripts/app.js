@@ -224,11 +224,13 @@ function loadEnemyStats() {
 }
 
 function updatePlayerName() {
-
+	name = $('#player1-selection input').val()
+	$('#player1-selection h3').text(name)
 }
 
 function updateEnemyName() {
-
+	name = $('#enemy-selection input').val()
+	$('#enemy-selection h3').text(name)
 }
 
 
