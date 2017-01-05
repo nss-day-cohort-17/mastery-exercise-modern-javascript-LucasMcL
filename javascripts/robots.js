@@ -87,11 +87,11 @@ Battledome.Robot.Pebble = function() {
 
 	this.model = "Pebble"
 	this.health = 60 + healthBonus
-	this.strength = 10 + strengthBonus
+	this.strength = 6 + strengthBonus
 	this.cooldown = 1
 	this.attack = "Stone Skip"
 	this.baseHealth = 60
-	this.baseStrength = 10
+	this.baseStrength = 6
 }
 Battledome.Robot.Pebble.prototype = new Battledome.Robot.Rock();
 
@@ -132,11 +132,11 @@ Battledome.Robot.IndexCard = function() {
 
 	this.model = "Index Card"
 	this.health = 50 + healthBonus
-	this.strength = 5 + strengthBonus
+	this.strength = 3 + strengthBonus
 	this.cooldown = .5
 	this.attack = "Paper Cut"
 	this.baseHealth = 50
-	this.baseStrength = 5
+	this.baseStrength = 3
 }
 Battledome.Robot.IndexCard.prototype = new Battledome.Robot.Paper();
 
