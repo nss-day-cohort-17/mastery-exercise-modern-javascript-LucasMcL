@@ -25,18 +25,112 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				<input type="text" placeholder="player1">
-				<select name="player1" id="player1">
+			<div class="col-md-4 col-md-offset-1">
+				<input type="text" placeholder="player1" class="text-center">
+				<div class="img-container bg-primary">
+					<h3 class="text-center"></h3>
+					<img src="/img/question-mark.png" alt="">
+				</div>
+				<div class="stats-container">
+					<table class="model-stats">
+						<tr class="health">
+							<td>Health: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="strength">
+							<td>Strength: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="speed">
+							<td>Speed: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="attack">
+							<td>Attack: </td>
+							<td></td>
+						</tr>
+						<tr class="strengths">
+							<td>Strong against: </td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Weak against: </td>
+							<td></td>
+						</tr>
+					</table> <!-- end table -->
+				</div> <!-- end stats container -->
+				<select name="player1" id="player1" class="text-center">
 					<option value="random" selected>Random</option>
 					<option value="boulder">Boulder</option>
 				</select>
+			</div> <!-- end col -->
+			<div class="col-md-4 col-md-offset-2">
+				<input type="text" placeholder="enemy" class="text-center">
 				<div class="img-container bg-primary">
 					<h3 class="text-center"></h3>
-					<img src="" alt=""> <!-- insert src when user selects model -->
-				</div> <!-- end img-container -->
-			</div>
-		</div>
+					<img src="/img/question-mark.png" alt="">
+				</div>
+				<div class="stats-container">
+					<table class="model-stats">
+						<tr class="health">
+							<td>Health: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="strength">
+							<td>Strength: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="speed">
+							<td>Speed: </td>
+							<td>
+								<div class="stats-bar-container">
+									<div class="stats-bar"></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="attack">
+							<td>Attack: </td>
+							<td></td>
+						</tr>
+						<tr class="strengths">
+							<td>Strong against: </td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Weak against: </td>
+							<td></td>
+						</tr>
+					</table> <!-- end table -->
+				</div> <!-- end stats container -->
+				<select name="player1" id="player1" class="text-center">
+					<option value="random" selected>Random</option>
+					<option value="boulder">Boulder</option>
+				</select>
+			</div> <!-- end col -->
+		</div> <!-- end row -->
+	</div> <!-- end container -->
+	<div class="container text-center">
+		<button id="to-battle" class="btn btn-danger"> To Battle! </button>
 	</div>
 </article>
 
