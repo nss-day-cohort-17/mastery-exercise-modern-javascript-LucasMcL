@@ -90,6 +90,10 @@ section#select-robot {
 	display: block;
 }
 
+.stats-container {
+  display: none;
+}
+
 /*****************
  ***Page Styles***
  *****************/
