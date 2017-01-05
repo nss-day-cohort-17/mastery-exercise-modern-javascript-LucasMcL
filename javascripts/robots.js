@@ -62,6 +62,8 @@ Battledome.Robot.Boulder = function() {
 	this.strength = 25 + strengthBonus
 	this.cooldown = 5
 	this.attack = "Rock Slam"
+	this.baseHealth = 80
+	this.baseStrength = 25
 }
 Battledome.Robot.Boulder.prototype = new Battledome.Robot.Rock();
 
@@ -82,6 +84,8 @@ Battledome.Robot.Pebble = function() {
 	this.strength = 10 + strengthBonus
 	this.cooldown = 1
 	this.attack = "Stone Skip"
+	this.baseHealth = 60
+	this.baseStrength = 10
 }
 Battledome.Robot.Pebble.prototype = new Battledome.Robot.Rock();
 
@@ -103,6 +107,8 @@ Battledome.Robot.Scroll = function() {
 	this.strength = 20 + strengthBonus
 	this.cooldown = 4
 	this.attack = "Ancient Arts"
+	this.baseHealth = 50
+	this.baseStrength = 20
 }
 Battledome.Robot.Scroll.prototype = new Battledome.Robot.Paper();
 
@@ -123,6 +129,8 @@ Battledome.Robot.IndexCard = function() {
 	this.strength = 5 + strengthBonus
 	this.cooldown = .5
 	this.attack = "Paper Cut"
+	this.baseHealth = 50
+	this.baseStrength = 5
 }
 Battledome.Robot.IndexCard.prototype = new Battledome.Robot.Paper();
 
@@ -143,6 +151,8 @@ Battledome.Robot.GardenScissors = function() {
 	this.strength = 10 + strengthBonus
 	this.cooldown = 2
 	this.attack = "Prune"
+	this.baseHealth = 60
+	this.baseStrength = 10
 }
 Battledome.Robot.GardenScissors.prototype = new Battledome.Robot.Scissors();
 
@@ -163,6 +173,8 @@ Battledome.Robot.CraftScissors = function() {
 	this.strength = 8 + strengthBonus
 	this.cooldown = 1
 	this.attack = "Snip"
+	this.baseHealth = 50
+	this.baseStrength = 8
 }
 Battledome.Robot.CraftScissors.prototype = new Battledome.Robot.Scissors();
 

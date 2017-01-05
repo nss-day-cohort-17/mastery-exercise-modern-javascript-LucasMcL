@@ -11,8 +11,7 @@ $(document).ready(function() {
 	$(document).keypress(moveFromTitle)
 	$(document).click(moveFromTitle)
 
-	// Note: this has to be refactored
-	loadModelStats()
+
 
 	// Change this to player input and enemy input
 	// $('#name').keyup(function(keyEvt) {
@@ -32,6 +31,11 @@ $(document).ready(function() {
 		updateEnemyName()
 		if(keyEvt.key === "Enter") this.blur()
 	})
+
+	$('#player1-selection select').change(assignPlayerRobot)
+
+	$('#enemy-selection select').change(assignEnemyRobot)
+
 
 	$('#to-battle').click(function() {
 		generateEnemy()
@@ -220,43 +224,99 @@ function highlightModel(clickEvt) {
 		.slideDown("slow")
 }
 
-function updateImages(clickEvt) {
-	var imgSrc = $(clickEvt.target)
-		.closest('.model')
-		.find('img')
-		.attr('src')
-
-	$('#confirmation img')
-		.attr('src', imgSrc)
-
-	$('#player1 img')
-		.attr('src', imgSrc)
-}
-
-function assignRobot(clickEvt) {
-	var model = $(clickEvt.target)
-		.closest('.model')
-		.attr('id')
+function assignPlayerRobot() {
+	var model = $('#player1-selection select').val()
 
 	switch(model) {
 		case 'boulder':
 			player1 = new Battledome.Robot.Boulder()
+			$('#player1-selection img').attr('src', '/img/models/boulder.png')
 			break
 		case 'pebble':
 			player1 = new Battledome.Robot.Pebble()
+			$('#player1-selection img').attr('src', '/img/models/pebble.png')
 			break
 		case 'scroll':
 			player1 = new Battledome.Robot.Scroll()
+			$('#player1-selection img').attr('src', '/img/models/scroll.png')
 			break
 		case 'index-card':
 			player1 = new Battledome.Robot.IndexCard()
+			$('#player1-selection img').attr('src', '/img/models/index-card.png')
 			break
 		case 'garden-scissors':
 			player1 = new Battledome.Robot.GardenScissors()
+			$('#player1-selection img').attr('src', '/img/models/garden-scissors.png')
 			break
 		case 'craft-scissors':
 			player1 = new Battledome.Robot.CraftScissors()
+			$('#player1-selection img').attr('src', '/img/models/craft-scissors.png')
 			break
+		case 'random':
+			player1 = {}
+			$('#player1-selection img').attr('src', '/img/question-mark.png')
+			break
+	}
+	loadPlayerStats()
+}
+
+function loadPlayerStats() {
+	if($('#player1-selection select').val() === 'random') {
+		$('#player1-selection .stats-container').hide()
+	}
+
+	else {
+		$('#player1-selection .health .stats-bar').css('width', `${player1.baseHealth}%`)
+		$('#player1-selection .strength .stats-bar').css('width', `${(player1.baseStrength / 30) * 100}%`)
+		$('#player1-selection .speed .stats-bar').css('width', `${((5 - player1.cooldown) / 5) * 100}%`)
+
+		$('#player1-selection .stats-container').show()
+	}
+}
+
+function assignEnemyRobot() {
+	var model = $('#enemy-selection select').val()
+
+	switch(model) {
+		case 'boulder':
+			enemy = new Battledome.Robot.Boulder()
+			$('#enemy-selection img').attr('src', '/img/models/boulder.png')
+			break
+		case 'pebble':
+			enemy = new Battledome.Robot.Pebble()
+			$('#enemy-selection img').attr('src', '/img/models/pebble.png')
+			break
+		case 'scroll':
+			enemy = new Battledome.Robot.Scroll()
+			$('#enemy-selection img').attr('src', '/img/models/scroll.png')
+			break
+		case 'index-card':
+			enemy = new Battledome.Robot.IndexCard()
+			$('#enemy-selection img').attr('src', '/img/models/index-card.png')
+			break
+		case 'garden-scissors':
+			enemy = new Battledome.Robot.GardenScissors()
+			$('#enemy-selection img').attr('src', '/img/models/garden-scissors.png')
+			break
+		case 'craft-scissors':
+			enemy = new Battledome.Robot.CraftScissors()
+			$('#enemy-selection img').attr('src', '/img/models/craft-scissors.png')
+			break
+		case 'random':
+			enemy = {}
+			$('#enemy-selection img').attr('src', '/img/question-mark.png')
+			break
+	}
+	loadEnemyStats()
+}
+
+function loadEnemyStats() {
+	if($('#enemy-selection select').val() === 'random') {
+		$('#enemy-selection .stats-container').hide()
+	}
+
+	else {
+		$('#enemy-selection .stats-container').show()
 	}
 }
 
