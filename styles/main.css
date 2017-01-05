@@ -7,6 +7,10 @@ Note: html, body, and articles set to 100% of window height
 This allows for setting the sections to a % of height
 */
 
+/*
+	NOTE: debug col heights in mobile size;
+*/
+
 html {
 	height: 100%;
 }
@@ -35,6 +39,40 @@ article#selection section {
 	min-height: 75%;
 }
 
+.col-md-4 {
+	height: 400px;
+}
+
+/* Override height of 400px for certain columns */
+.auto-height {
+	height: auto;
+}
+
+table {
+	width: 100%;
+}
+
+table td:last-child {
+  float: right;
+}
+
+/* Enough width for stat bars */
+.model td:last-child {
+	width: 150px;
+}
+
+#selection select,
+#selection input {
+  width: 100%;
+  display: block;
+  height: 30px;
+  margin-bottom: 40px;
+}
+
+#selection select {
+  margin-top: 25px;
+}
+
 /*****************
  *Initial Display*
  *****************/
@@ -57,10 +95,8 @@ section#select-robot {
 }
 
 .stats-container {
-	display: none;
+  display: none;
 }
-
-
 
 /*****************
  ***Page Styles***
@@ -69,11 +105,16 @@ section#select-robot {
 	font-size: 150px;
 }
 
+#to-battle,
+#attack {
+  margin-top: 150px;
+  width: 600px;
+  height: 75px;
+  font-size: 36px;
+}
+
 #to-battle {
-	margin-top: 100px;
-	width: 600px;
-	height: 75px;
-	font-size: 36px;
+  margin-top: 280px;
 }
 
 .btn-container {
@@ -97,12 +138,13 @@ section#select-robot {
 /*****************
  ** Image Styles *
  *****************/
-.img-container{
+.img-container {
 	height: 400px;
+	margin-top: -20px; /*puts inline with col-md-4*/
 }
 
 #battledome img,
-section img {
+#selection img {
 	max-width: 80%;
 	max-height: 80%;
 	position: absolute;
@@ -128,6 +170,95 @@ using .show()
 	background-color: yellow;
 	color: black;
 }
+
+/*****************
+ ** Health Bar ***
+ *****************/
+
+.health-bar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.bar {
+  background: #c54;
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+
+.hit {
+  background: rgba(255,255,255,0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+}
+
+/*****************
+ * Cooldown Bar **
+ *****************/
+
+.cooldown {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 20px;
+	padding: 2.5px;
+  width: 100%;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.cooldown-bar {
+	background: #00ccff;
+  width: 100%;
+	height: 15px;
+  position: relative;
+}
+
+/*****************
+ *** Stats Bar ***
+ *****************/
+
+.stats-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 20px;
+	padding: 2.5px;
+  width: 200px;
+  background: #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.stats-bar {
+	background: #00ccff;
+  width: 100%;
+	height: 15px;
+  position: relative;
+}
+
+
 
 
 

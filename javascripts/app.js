@@ -1,84 +1,41 @@
-// SPA Layout
-
-// Every "page" in a article
-// Title page, click anywhere to continue
-// First page, next button on right side
-// Second page on, previous and next buttons
-
-// The previous button should execute immediately
-// The next button should perform a check to make sure
-//	something has been selected
-
-// Maybe give all the buttons that move forward the same class?
-
-// Article -- Landing page
-// Article -- Selection
-	// Header
-	// Section, select-robot [hide previous button]
-	// Section, select-model
-		// This has to be dynamic, based on robot selection
-	// Section, select-weapon
-	// Section, input-name [hide next button]
-	// Buttons below
-// Article -- Battlefield
-
-// NOTE: put battledome code into own file
-
-let sections = ["select-robot",
-								"select-model",
-								"input-name",
-								"confirmation"]
-let sectionIndex = 0
-let titleScreenDone = false
-let robotTypeSelected = false
-let robotModelSelected = false
+var titleScreenDone = false
 var player1 = {}
 var enemy = {}
 
+// Add event listeners upon page load
 $(document).ready(function() {
 
 	// Show first article
 	$('article#landing-page').show()
-	//Note: adjust this animation
 	animateTitle()
-	//Note: use setTimeout to delay showing of footer
-	// after animation
 	$(document).keypress(moveFromTitle)
 	$(document).click(moveFromTitle)
 
-	// Disable the previous button upon load
-	$('#previous').attr('disabled', true)
-
-	// When the next button is clicked
-	$('#next').click(checkThenProceed)
-	// When the previous button is clicked
-	$('#previous').click(showPreviousSection)
-
-	$('.robot').click(function(clickEvt) {
-		robotTypeSelected = true
-		loadModels(clickEvt)
-		highlightRobot(clickEvt)
+	// Live-update name
+	$('#player1-selection input').keyup((keyEvt) => {
+		updatePlayerName()
+		if(keyEvt.key === "Enter") $('#player1-selection input').blur()
+	})
+	$('#enemy-selection input').keyup((keyEvt) => {
+		updateEnemyName()
+		if(keyEvt.key === "Enter") $('#enemy-selection input').blur()
 	})
 
-	$('.model').click(function(clickEvt) {
-		robotModelSelected = true
-		updateImages(clickEvt)
-		highlightModel(clickEvt)
-		assignRobot(clickEvt)
-	})
+	// Create player-object upon selection
+	$('#player1-selection select').change(assignPlayerRobot)
+	$('#enemy-selection select').change(assignEnemyRobot)
 
-	$('#name').keyup(function(keyEvt) {
-		updateName()
-		if(keyEvt.key === "Enter") {
-			assignRobotName()
-			checkThenProceed()
-		}
-	})
 
 	$('#to-battle').click(function() {
-		generateEnemy()
+		if($.isEmptyObject(player1)) generatePlayer()
+		else loadPlayer()
+		if($.isEmptyObject(enemy)) generateEnemy()
+		else loadEnemy()
 		loadBattle()
+		fightPlayer()
 	})
+
+	$('#attack').click(whenAttackIsClicked)
 })
 
 function animateTitle() {
@@ -94,239 +51,188 @@ function moveFromTitle() {
 	}
 }
 
-function showNextSection() {
-	$(`#${sections[sectionIndex]}`).hide()
-	sectionIndex++
-	$(`#${sections[sectionIndex]}`).show()
-	$('#previous').attr('disabled', false)
-	if(sectionIndex === sections.length - 1) {
-		$('#next').addClass('hidden')
-	}
+function loadModelStats() {
+	$('#boulder .health .stats-bar').css('width', '90%')
+	$('#boulder .strength .stats-bar').css('width', '83%')
+	$('#boulder .speed .stats-bar').css('width', '5%')
+
+	$('#pebble .health .stats-bar').css('width', '70%')
+	$('#pebble .strength .stats-bar').css('width', '42%')
+	$('#pebble .speed .stats-bar').css('width', '80%')
+
+	$('#scroll .health .stats-bar').css('width', '60%')
+	$('#scroll .strength .stats-bar').css('width', '75%')
+	$('#scroll .speed .stats-bar').css('width', '20%')
+
+	$('#index-card .health .stats-bar').css('width', '50%')
+	$('#index-card .strength .stats-bar').css('width', '20%')
+	$('#index-card .speed .stats-bar').css('width', '100%')
+
+	$('#garden-scissors .health .stats-bar').css('width', '70%')
+	$('#garden-scissors .strength .stats-bar').css('width', '59%')
+	$('#garden-scissors .speed .stats-bar').css('width', '60%')
+
+	$('#craft-scissors .health .stats-bar').css('width', '60%')
+	$('#craft-scissors .strength .stats-bar').css('width', '30%')
+	$('#craft-scissors .speed .stats-bar').css('width', '80%')
+
+	// Change color based on percent width
+	$('#select-model .stats-bar').each(function() {
+		var width = parseFloat($(this).css('width'))
+
+		if(width >= 75) $(this).css('background', '#14b214')
+		else if (width >= 25 && width < 75) $(this).css('background', 'rgb(219, 219, 19)')
+		else $(this).css('background', '#ff2121')
+	})
 }
 
-// Remove highlighting from page and change
-// boolean variable for checking selection to false
-// Then, go back a page
-function showPreviousSection() {
-	// Discard changes from current page when you go backwards
-	var currentSection = sections[sectionIndex]
-	switch (currentSection) {
-		case 'select-model':
-			robotModelSelected = false
-			$('.model .img-container')
-				.removeClass('highlight')
-			$('.model .stats-container')
-				.hide()
-			break
-		case 'input-name':
-			$('#name').val('')
-			break
-	}
-
-	// Hide current page, show previous page
-	// Decriment sectionIndex
-	$(`#${sections[sectionIndex]}`).hide()
-	sectionIndex--
-	$(`#${sections[sectionIndex]}`).show()
-	$('#next').removeClass('hidden')
-	if(sectionIndex === 0) {
-		$('#previous').attr('disabled', true)
-	}
-}
-
-// Performs check before moving on to next section
-// Condition to check changes based on section
-function checkThenProceed() {
-	var currentSection = sections[sectionIndex]
-	var okToProceed = false
-
-	// Performs check to see if it's ok to proceed
-	switch (currentSection) {
-		case "select-robot":
-			if(robotTypeSelected === true) okToProceed = true
-			else alert("Please select a robot type.")
-			break
-		case "select-model":
-			if(robotModelSelected === true) okToProceed = true
-			else alert("Please select your model")
-			break
-		case "input-name":
-			if($('#name').val() != ''){
-				okToProceed = true
-				assignRobotName()
-			}
-			else alert("Please input a name")
-			break
-		case "confirmation":
-			okToProceed = true
-			break
-	}
-
-	// Shows next section if it's OK to
-	if(okToProceed === true) {
-		showNextSection()
-	}
-}
-
-function loadModels(clickEvt) {
-	// Get id from robot element
-	var robot = $(clickEvt.target)
-		.closest('.robot')
-		.attr('id')
-
-	// Class uses !important so it stays hidden,
-	// Even when the next section is shown
-	$('.model-row').addClass('hidden')
-
-	switch (robot) {
-		case 'rock':
-			$('#rock-models').removeClass('hidden')
-			break
-		case 'paper':
-			$('#paper-models').removeClass('hidden')
-			break
-		case 'scissors':
-			$('#scissors-models').removeClass('hidden')
-			break
-	}
-}
-
-function highlightRobot(clickEvt) {
-	var target = clickEvt.target
-	$('.robot .img-container')
-		.removeClass('highlight')
-	$('.robot .stats-container')
-		.hide()
-
-	$(target)
-		.closest('.img-container')
-		.addClass('highlight')
-	$(target)
-		.closest('.robot')
-		.find('.stats-container')
-		.slideDown("slow")
-}
-
-function highlightModel(clickEvt) {
-	var target = clickEvt.target
-	$('.model .img-container')
-		.removeClass('highlight')
-	$('.model .stats-container')
-		.hide()
-
-	$(target)
-		.closest('.img-container')
-		.addClass('highlight')
-	$(target)
-		.closest('.model')
-		.find('.stats-container')
-		.slideDown("slow")
-}
-
-function updateImages(clickEvt) {
-	var imgSrc = $(clickEvt.target)
-		.closest('.model')
-		.find('img')
-		.attr('src')
-
-	$('#confirmation img')
-		.attr('src', imgSrc)
-
-	$('#player1 img')
-		.attr('src', imgSrc)
-}
-
-function assignRobot(clickEvt) {
-	var model = $(clickEvt.target)
-		.closest('.model')
-		.attr('id')
+function assignPlayerRobot() {
+	var model = $('#player1-selection select').val()
 
 	switch(model) {
 		case 'boulder':
 			player1 = new Battledome.Robot.Boulder()
+			$('#player1-selection img').attr('src', '/img/models/boulder.png')
+			$('#player1 img').attr('src', '/img/models/boulder.png')
 			break
 		case 'pebble':
 			player1 = new Battledome.Robot.Pebble()
+			$('#player1-selection img').attr('src', '/img/models/pebble.png')
+			$('#player1 img').attr('src', '/img/models/pebble.png')
 			break
 		case 'scroll':
 			player1 = new Battledome.Robot.Scroll()
+			$('#player1-selection img').attr('src', '/img/models/scroll.png')
+			$('#player1 img').attr('src', '/img/models/scroll.png')
 			break
 		case 'index-card':
 			player1 = new Battledome.Robot.IndexCard()
+			$('#player1-selection img').attr('src', '/img/models/index-card.png')
+			$('#player1 img').attr('src', '/img/models/index-card.png')
 			break
 		case 'garden-scissors':
 			player1 = new Battledome.Robot.GardenScissors()
+			$('#player1-selection img').attr('src', '/img/models/garden-scissors.png')
+			$('#player1 img').attr('src', '/img/models/garden-scissors.png')
 			break
 		case 'craft-scissors':
 			player1 = new Battledome.Robot.CraftScissors()
+			$('#player1-selection img').attr('src', '/img/models/craft-scissors.png')
+			$('#player1 img').attr('src', '/img/models/craft-scissors.png')
+			break
+		case 'random':
+			player1 = {}
+			$('#player1-selection img').attr('src', '/img/question-mark.png')
 			break
 	}
+	loadPlayerStats()
 }
 
-function assignRobotName(evt) {
-	var name = $('#name').val()
-	player1.name = name
-}
-
-function updateName() {
-	var name = $('#name').val()
-	$('#confirmation h3').text(name)
-	$('#player1 h3').text(name)
-}
-
-function loadBattle() {
-	$('article').hide()
-	$('article#battledome').show()
-}
-
-function generateEnemy() {
-	var rockNames = ["Stoney McStoneface",
-									 "Rock Lobstah"]
-  var paperNames = ["Bureaucracy",
-  									"Wide-Ruled Nightmare"]
-	var scissorsNames = ["Edward Scissorhands",
-											 "I Will Cut You"]
-	var models = ["Boulder", "Pebble",
-								"Scroll", "IndexCard",
-								"GardenScissors", "CraftScissors"]
-
-	var random = Math.floor(Math.random() * 6)
-	var randomModel = models[random]
-	var random = Math.floor(Math.random() * 2)
-
-	enemy = new Battledome.Robot[randomModel]()
-
-	// Assign name, load picture into battlefield
-	switch(enemy.model) {
-		case 'Boulder':
-			enemy.name = rockNames[random]
-			$('#enemy img').attr('src', "../img/models/boulder.png")
-			break
-		case 'Pebble':
-			enemy.name = rockNames[random]
-			$('#enemy img').attr('src', "../img/models/pebble.png")
-			break
-		case 'Scroll':
-			enemy.name = paperNames[random]
-			$('#enemy img').attr('src', "../img/models/scroll.png")
-			break
-		case 'Index Card':
-			enemy.name = paperNames[random]
-			$('#enemy img').attr('src', "../img/models/index-card.png")
-			break
-		case 'Garden Scissors':
-			enemy.name = scissorsNames[random]
-			$('#enemy img').attr('src', "../img/models/garden-scissors.png")
-			break
-		case 'Craft Scissors':
-			enemy.name = scissorsNames[random]
-			$('#enemy img').attr('src', "../img/models/craft-scissors.png")
-			break
+function loadPlayerStats() {
+	if($('#player1-selection select').val() === 'random') {
+		$('#player1-selection .stats-container').hide()
 	}
 
-	// Load name into battlefield
-	$('#enemy h3').text(enemy.name)
+	else {
+		$('#player1-selection .health .stats-bar').css('width', `${player1.baseHealth}%`)
+		$('#player1-selection .strength .stats-bar').css('width', `${(player1.baseStrength / 30) * 100}%`)
+		$('#player1-selection .speed .stats-bar').css('width', `${((5.1 - player1.cooldown) / 5) * 100}%`)
+		$('#player1-selection .attack td:last-child').text(`${player1.attack}`)
+		$('#player1-selection .strong td:last-child').text(`${player1.strongAgainst}`)
+		$('#player1-selection .weak td:last-child').text(`${player1.weakAgainst}`)
+
+		$('#player1-selection .stats-container').show()
+	}
+
+	// Change color based on percent width
+	$('#player1-selection .stats-bar').each(function() {
+		var width = parseFloat($(this).css('width'))
+
+		if(width >= 75) $(this).css('background', '#14b214')
+		else if (width >= 25 && width < 75) $(this).css('background', 'rgb(219, 219, 19)')
+		else $(this).css('background', '#ff2121')
+	})
 }
+
+function assignEnemyRobot() {
+	var model = $('#enemy-selection select').val()
+
+	switch(model) {
+		case 'boulder':
+			enemy = new Battledome.Robot.Boulder()
+			$('#enemy-selection img').attr('src', '/img/models/boulder.png')
+			$('#enemy img').attr('src', '/img/models/boulder.png')
+			break
+		case 'pebble':
+			enemy = new Battledome.Robot.Pebble()
+			$('#enemy-selection img').attr('src', '/img/models/pebble.png')
+			$('#enemy img').attr('src', '/img/models/pebble.png')
+			break
+		case 'scroll':
+			enemy = new Battledome.Robot.Scroll()
+			$('#enemy-selection img').attr('src', '/img/models/scroll.png')
+			$('#enemy img').attr('src', '/img/models/scroll.png')
+			break
+		case 'index-card':
+			enemy = new Battledome.Robot.IndexCard()
+			$('#enemy-selection img').attr('src', '/img/models/index-card.png')
+			$('#enemy img').attr('src', '/img/models/index-card.png')
+			break
+		case 'garden-scissors':
+			enemy = new Battledome.Robot.GardenScissors()
+			$('#enemy-selection img').attr('src', '/img/models/garden-scissors.png')
+			$('#enemy img').attr('src', '/img/models/garden-scissors.png')
+			break
+		case 'craft-scissors':
+			enemy = new Battledome.Robot.CraftScissors()
+			$('#enemy-selection img').attr('src', '/img/models/craft-scissors.png')
+			$('#enemy img').attr('src', '/img/models/craft-scissors.png')
+			break
+		case 'random':
+			enemy = {}
+			$('#enemy-selection img').attr('src', '/img/question-mark.png')
+			break
+	}
+	loadEnemyStats()
+}
+
+// NOTE: incomplete
+function loadEnemyStats() {
+	if($('#enemy-selection select').val() === 'random') {
+		$('#enemy-selection .stats-container').hide()
+	}
+
+	else {
+		$('#enemy-selection .health .stats-bar').css('width', `${enemy.baseHealth}%`)
+		$('#enemy-selection .strength .stats-bar').css('width', `${(enemy.baseStrength / 30) * 100}%`)
+		$('#enemy-selection .speed .stats-bar').css('width', `${((5.1 - enemy.cooldown) / 5) * 100}%`)
+		$('#enemy-selection .attack td:last-child').text(`${enemy.attack}`)
+		$('#enemy-selection .strong td:last-child').text(`${enemy.strongAgainst}`)
+		$('#enemy-selection .weak td:last-child').text(`${enemy.weakAgainst}`)
+
+		$('#enemy-selection .stats-container').show()
+	}
+
+	// Change color based on percent width
+	$('#enemy-selection .stats-bar').each(function() {
+		var width = parseFloat($(this).css('width'))
+
+		if(width >= 75) $(this).css('background', '#14b214')
+		else if (width >= 25 && width < 75) $(this).css('background', 'rgb(219, 219, 19)')
+		else $(this).css('background', '#ff2121')
+	})
+}
+
+function updatePlayerName() {
+	name = $('#player1-selection input').val()
+	$('#player1-selection h3').text(name)
+}
+
+function updateEnemyName() {
+	name = $('#enemy-selection input').val()
+	$('#enemy-selection h3').text(name)
+}
+
 
 
 
