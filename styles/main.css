@@ -62,7 +62,7 @@ table {
   width: 100%;
   display: block;
   height: 30px;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
 #selection select {
@@ -90,11 +90,6 @@ section#select-robot {
 	display: block;
 }
 
-.stats-container {
-	display: none;
-}
-
-
 /*****************
  ***Page Styles***
  *****************/
@@ -104,10 +99,14 @@ section#select-robot {
 
 #to-battle,
 #attack {
-	margin-top: 150px;
-	width: 600px;
-	height: 75px;
-	font-size: 36px;
+  margin-top: 150px;
+  width: 600px;
+  height: 75px;
+  font-size: 36px;
+}
+
+#to-battle {
+  margin-top: 280px;
 }
 
 .btn-container {

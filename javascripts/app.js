@@ -1,16 +1,4 @@
-
-
-// Bug:
-	// clicking on stats removes highlighting
-
-var sections = ["select-robot",
-								"select-model",
-								"input-name",
-								"confirmation"]
-var sectionIndex = 0
 var titleScreenDone = false
-var robotTypeSelected = false
-var robotModelSelected = false
 var player1 = {}
 var enemy = {}
 
@@ -19,42 +7,30 @@ $(document).ready(function() {
 
 	// Show first article
 	$('article#landing-page').show()
-	//Note: adjust this animation
 	animateTitle()
-	//Note: use setTimeout to delay showing of footer
-	// after animation
 	$(document).keypress(moveFromTitle)
 	$(document).click(moveFromTitle)
 
-	// Disable the previous button upon load
-	$('#previous').attr('disabled', true)
-
-	// When the next button is clicked
-	$('#next').click(checkThenProceed)
-	// When the previous button is clicked
-	$('#previous').click(showPreviousSection)
-
+	// Note: this has to be refactored
 	loadModelStats()
 
-	$('.robot').click(function(clickEvt) {
-		robotTypeSelected = true
-		loadModels(clickEvt)
-		highlightRobot(clickEvt)
+	// Change this to player input and enemy input
+	// $('#name').keyup(function(keyEvt) {
+	// 	updateName()
+	// 	if(keyEvt.key === "Enter") {
+	// 		assignRobotName()
+	// 		checkThenProceed()
+	// 	}
+	// })
+
+	$('#player1-selection input').keyup(function(keyEvt) {
+		updatePlayerName()
+		if(keyEvt.key === "Enter") this.blur()
 	})
 
-	$('.model').click(function(clickEvt) {
-		robotModelSelected = true
-		updateImages(clickEvt)
-		highlightModel(clickEvt)
-		assignRobot(clickEvt)
-	})
-
-	$('#name').keyup(function(keyEvt) {
-		updateName()
-		if(keyEvt.key === "Enter") {
-			assignRobotName()
-			checkThenProceed()
-		}
+	$('#enemy-selection input').keyup(function(keyEvt) {
+		updateEnemyName()
+		if(keyEvt.key === "Enter") this.blur()
 	})
 
 	$('#to-battle').click(function() {
@@ -289,10 +265,14 @@ function assignRobotName(evt) {
 	player1.name = name
 }
 
-function updateName() {
-	var name = $('#name').val()
-	$('#confirmation h3').text(name)
-	$('#player1 h3').text(name)
+function updatePlayerName() {
+	var name = $('#player1-selection input').val()
+	$('#player1-selection h3').text(name)
+}
+
+function updateEnemyName() {
+	var name = $('#enemy-selection input').val()
+	$('#enemy-selection h3').text(name)
 }
 
 
