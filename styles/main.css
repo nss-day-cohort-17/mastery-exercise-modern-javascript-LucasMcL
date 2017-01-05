@@ -52,6 +52,10 @@ table {
 	width: 100%;
 }
 
+table td:last-child {
+  float: right;
+}
+
 /* Enough width for stat bars */
 .model td:last-child {
 	width: 150px;
@@ -238,7 +242,7 @@ using .show()
   box-sizing: border-box;
 	height: 20px;
 	padding: 2.5px;
-  width: 100%;
+  width: 200px;
   background: #ddd;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

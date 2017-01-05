@@ -5,6 +5,15 @@
 
 // To do: Display message when attack hits
 
+var rockNames = ["Stoney McStoneface",
+								 "Rock Lobstah"]
+var paperNames = ["Bureaucracy",
+									"Wide-Ruled Nightmare"]
+var scissorsNames = ["Edward Scissorhands",
+										 "I Will Cut You"]
+var models = ["Boulder", "Pebble",
+							"Scroll", "IndexCard",
+							"GardenScissors", "CraftScissors"]
 var intervalID;
 
 function loadBattle() {
@@ -27,17 +36,104 @@ function loadBattle() {
 
 }
 
-function generateEnemy() {
-	var rockNames = ["Stoney McStoneface",
-									 "Rock Lobstah"]
-  var paperNames = ["Bureaucracy",
-  									"Wide-Ruled Nightmare"]
-	var scissorsNames = ["Edward Scissorhands",
-											 "I Will Cut You"]
-	var models = ["Boulder", "Pebble",
-								"Scroll", "IndexCard",
-								"GardenScissors", "CraftScissors"]
+function loadPlayer() {
+	var random = Math.floor(Math.random() * 2)
 
+	// Assign name based on type
+	if($('#player1-selection input').val() === '') {
+		switch (player1.type) {
+			case "Rock":
+				player1.name = rockNames[random]
+				break
+			case "Paper":
+				player1.name = paperNames[random]
+				break
+			case "Scissors":
+				player1.name = scissorsNames[random]
+				break
+		}
+	}
+	else {
+		player1.name = $('#player1-selection input').val()
+	}
+
+	$('#player1 h3').text(player1.name)
+}
+
+function generatePlayer() {
+	var random = Math.floor(Math.random() * 6)
+	var randomModel = models[random]
+	var random = Math.floor(Math.random() * 2)
+
+	player1 = new Battledome.Robot[randomModel]()
+
+	// Assign name, load picture into battlefield
+	switch(player1.model) {
+		case 'Boulder':
+			$('#player1 img').attr('src', "../img/models/boulder.png")
+			break
+		case 'Pebble':
+			$('#player1 img').attr('src', "../img/models/pebble.png")
+			break
+		case 'Scroll':
+			$('#player1 img').attr('src', "../img/models/scroll.png")
+			break
+		case 'Index Card':
+			$('#player1 img').attr('src', "../img/models/index-card.png")
+			break
+		case 'Garden Scissors':
+			$('#player1 img').attr('src', "../img/models/garden-scissors.png")
+			break
+		case 'Craft Scissors':
+			$('#player1 img').attr('src', "../img/models/craft-scissors.png")
+			break
+	}
+	// Assign name based on type
+	if($('#player1-selection input').val() === '') {
+		switch (player1.type) {
+			case "Rock":
+				player1.name = rockNames[random]
+				break
+			case "Paper":
+				player1.name = paperNames[random]
+				break
+			case "Scissors":
+				player1.name = scissorsNames[random]
+				break
+		}
+	}
+	else {
+		player1.name = $('#player1-selection input').val()
+	}
+	// Load name into battlefield
+	$('#player1 h3').text(player1.name)
+}
+
+function loadEnemy() {
+	var random = Math.floor(Math.random() * 2)
+
+	// Assign name based on type
+	if($('#enemy-selection input').val() === '') {
+		switch (enemy.type) {
+			case "Rock":
+				enemy.name = rockNames[random]
+				break
+			case "Paper":
+				enemy.name = paperNames[random]
+				break
+			case "Scissors":
+				enemy.name = scissorsNames[random]
+				break
+		}
+	}
+	else {
+		enemy.name = $('#enemy-selection input').val()
+	}
+
+	$('#enemy h3').text(enemy.name)
+}
+
+function generateEnemy() {
 	var random = Math.floor(Math.random() * 6)
 	var randomModel = models[random]
 	var random = Math.floor(Math.random() * 2)
@@ -47,29 +143,40 @@ function generateEnemy() {
 	// Assign name, load picture into battlefield
 	switch(enemy.model) {
 		case 'Boulder':
-			enemy.name = rockNames[random]
 			$('#enemy img').attr('src', "../img/models/boulder.png")
 			break
 		case 'Pebble':
-			enemy.name = rockNames[random]
 			$('#enemy img').attr('src', "../img/models/pebble.png")
 			break
 		case 'Scroll':
-			enemy.name = paperNames[random]
 			$('#enemy img').attr('src', "../img/models/scroll.png")
 			break
 		case 'Index Card':
-			enemy.name = paperNames[random]
 			$('#enemy img').attr('src', "../img/models/index-card.png")
 			break
 		case 'Garden Scissors':
-			enemy.name = scissorsNames[random]
 			$('#enemy img').attr('src', "../img/models/garden-scissors.png")
 			break
 		case 'Craft Scissors':
-			enemy.name = scissorsNames[random]
 			$('#enemy img').attr('src', "../img/models/craft-scissors.png")
 			break
+	}
+	// Assign name based on type
+	if($('#enemy-selection input').val() === '') {
+		switch (enemy.type) {
+			case "Rock":
+				enemy.name = rockNames[random]
+				break
+			case "Paper":
+				enemy.name = paperNames[random]
+				break
+			case "Scissors":
+				enemy.name = scissorsNames[random]
+				break
+		}
+	}
+	else {
+		enemy.name = $('#enemy-selection input').val()
 	}
 
 	// Load name into battlefield

@@ -31,18 +31,24 @@ Battledome.Robot = function(name) {
 
 Battledome.Robot.Rock = function() {
 	this.type = "Rock"
+	this.strongAgainst = "Scissors"
+	this.weakAgainst = "Paper"
 }
 Battledome.Robot.Rock.prototype = new Battledome.Robot();
 
 
 Battledome.Robot.Paper = function() {
 	this.type = "Paper"
+	this.strongAgainst = "Rock"
+	this.weakAgainst = "Scissors"
 }
 Battledome.Robot.Paper.prototype = new Battledome.Robot();
 
 
 Battledome.Robot.Scissors = function() {
 	this.type = "Scissors"
+	this.strongAgainst = "Paper"
+	this.weakAgainst = "Rock"
 }
 Battledome.Robot.Scissors.prototype = new Battledome.Robot();
 
